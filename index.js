@@ -1,12 +1,7 @@
-const gnomeSort = (arr) => {
-  let index = 0;
-  while (index < arr.length) {
-    if (index === 0 || arr[index] >= arr[index - 1]) {
-      index++;
-    } else {
-      [arr[index], arr[index - 1]] = [arr[index - 1], arr[index]];
-      index--;
-    }
-  }
-  return arr;
-};
+function pathSum(root, sum) {
+  if (!root) return false;
+  if (!root.left && !root.right && root.val === sum) return true;
+  return (
+    pathSum(root.left, sum - root.val) || pathSum(root.right, sum - root.val)
+  );
+}
